@@ -1,0 +1,29 @@
+.favorable {
+    background-color: lightblue;
+}
+
+.moderate {
+    background-color: lightgreen;
+}
+
+.severe {
+    background-color: red;
+}
+
+.dashboard {
+    text-align: center;
+    background-color: lightblue;
+}
+
+textarea {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+}
+
+.weather{
+    border-style: solid;
+    border-width: 1px;
+}
