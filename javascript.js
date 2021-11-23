@@ -5,10 +5,9 @@
 //   });
 // });
 
-var rHistory = function(event,cityName2) {
-    console.log(event, cityName2)
+var rHistory = function(cityName2) {
     $("textarea").val(cityName2);
-    cities;
+    cities();
 }
 
 var cities = function() {
@@ -17,7 +16,11 @@ var cities = function() {
     localStorage.setItem(cityName, cities);
     const cityHeader = $("<h4>");
     cityHeader.text(cityName)
-    .on("click", rHistory(event,cityName)); 
+    .on("click", function(event) {
+        event.preventDefault();
+        rHistory(event.target.textContent);
+    });
+
     $(".history").append(cityHeader);
 
 
@@ -76,4 +79,5 @@ var cities = function() {
 }
 var cityName = $("textarea").val();
 localStorage.setItem(cityName, cities);
+
 $(".submit").on("click", cities);
