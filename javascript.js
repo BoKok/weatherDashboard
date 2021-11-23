@@ -5,13 +5,22 @@
 //   });
 // });
 
+var rHistory = function(event,cityName2) {
+    console.log(event, cityName2)
+    $("textarea").val(cityName2);
+    cities;
+}
+
 var cities = function() {
     var cityName = $("textarea").val();
 
     localStorage.setItem(cityName, cities);
-    $(".history").append("<h4>" + cityName + "</h4>");
+    const cityHeader = $("<h4>");
+    cityHeader.text(cityName)
+    .on("click", rHistory(event,cityName)); 
+    $(".history").append(cityHeader);
 
-    console.log(cityName);
+
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6bd99a172fcab706a75e9217f1badfef").then(function(response) {
     response.json().then(function(data) {
     console.log(data);
@@ -36,17 +45,18 @@ var cities = function() {
         $("#uv").addClass("severe");
     }
 
+    if ($("img") != "undefined") {
+        $("img").remove()
+    }
     for (i=1; i < 6; i++) {
     var epoch = oneCall.daily[i].dt;
     var epochConv = new Date(epoch * 1000);
     var newTime = epochConv.toLocaleDateString()
     $(".day-" + i).text(newTime);
     var wIcon = oneCall.daily[i].weather[0].icon;
+
     var wIconP = "http://openweathermap.org/img/wn/" + wIcon +"@2x.png"
-    if (typeof img != "undefined") {
-        $(img).remove()
-    } 
-    $(".icon-" + i).append("<img src='" +wIconP + "'>");
+    $(".icon-" + i).append("<img src='" + wIconP + "'>");
     var dayT = oneCall.daily[i].temp.day;
     $("#temp-" + i).text("Temp: " + dayT + " °F");
     var dayW = oneCall.daily[i].wind_speed;
