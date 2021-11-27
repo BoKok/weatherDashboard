@@ -10,6 +10,7 @@ In the seach bar, you will enter the name of any given city and press submit to 
 
 ![Search Bar](search.PNG)
 ![Weather Conditions](conditions.PNG)
+https://bokok.github.io/weatherDashboard/index
 
 Credits
 Bo Kok
